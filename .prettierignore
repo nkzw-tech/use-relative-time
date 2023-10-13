@@ -1,0 +1,3 @@
+lib
+!/lib/**/*.d.ts
+pnpm-lock.yaml
