@@ -14,7 +14,7 @@ export default function useRelativeTime(
     | Array<Intl.UnicodeBCP47LocaleIdentifier> = 'en',
   dateNow = Date.now,
 ) {
-  const [now, setNow] = useState(() => dateNow());
+  const [now, setNow] = useState(dateNow);
 
   useEffect(() => {
     if (now - time < minute) {
