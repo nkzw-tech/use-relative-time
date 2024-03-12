@@ -1,6 +1,6 @@
 {
   "name": "@nkzw/use-relative-time",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Christoph Nakazawa <christoph.pojer@gmail.com>",
   "description": "A zero-dependency React hook for formatting relative dates.",
   "repository": {

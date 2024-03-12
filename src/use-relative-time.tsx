@@ -17,11 +17,12 @@ export default function useRelativeTime(
   const [now, setNow] = useState(dateNow);
 
   useEffect(() => {
-    if (now - time < minute) {
-      const interval = setInterval(() => setNow(dateNow()), 10_000);
-      return () => clearInterval(interval);
-    }
-  }, [dateNow, now, time]);
+    const timer = setInterval(
+      () => setNow(dateNow()),
+      Math.abs(now - time) >= 2 * minute ? minute : second,
+    );
+    return () => clearInterval(timer);
+  }, [now, time, dateNow]);
 
   const intl = useMemo(() => {
     try {
