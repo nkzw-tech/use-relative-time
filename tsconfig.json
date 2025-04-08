@@ -1,19 +1,32 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowImportingTsExtensions": true,
+    "checkJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "incremental": true,
+    "incremental": false,
+    "isolatedModules": true,
     "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "noEmit": true,
     "noImplicitOverride": true,
     "noUnusedLocals": true,
-    "outDir": "./lib",
+    "plugins": [
+      {
+        "lint": {
+          "unknownProperties": "error"
+        }
+      }
+    ],
     "resolveJsonModule": true,
+    "resolvePackageJsonExports": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2022"
-  }
+    "target": "es2024"
+  },
+  "exclude": ["lib/", "node_modules"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

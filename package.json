@@ -1,6 +1,6 @@
 {
   "name": "@nkzw/use-relative-time",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Christoph Nakazawa <christoph.pojer@gmail.com>",
   "description": "A zero-dependency React hook for formatting relative dates.",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/nkzw-tech/use-relative-time.git"
   },
   "license": "MIT",
-  "main": "lib/use-relative-time.js",
+  "main": "lib/index.js",
   "type": "module",
   "keywords": [
     "date",
@@ -20,21 +20,20 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@nkzw/eslint-config": "^1.14.0",
-    "@testing-library/react-hooks": "^8.0.1",
-    "@types/react": "^18.2.65",
-    "esbuild": "^0.20.1",
-    "eslint": "^8.57.0",
-    "happy-dom": "^13.7.8",
-    "prettier": "^3.2.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.4.2",
-    "vitest": "^1.3.1"
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@nkzw/eslint-config": "^2.2.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.0",
+    "eslint": "^9.24.0",
+    "prettier": "^3.5.3",
+    "react-dom": "^19.1.0",
+    "react": "^19.1.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   },
   "scripts": {
-    "build": "mkdir -p lib && rm -rf lib/*; tsc --declaration --emitDeclarationOnly --noEmit false && mv lib/src/*.d.ts lib/ && rmdir lib/src && rm -rf lib/test && prettier --ignore-path '' --write lib/use-relative-time.d.ts && esbuild --target=es2017 --format=esm --outfile=lib/use-relative-time.js --external:react --bundle ./src/use-relative-time.tsx",
+    "build": "mkdir -p lib && tsup src/index.tsx -d lib --target=node22 --format=esm --clean --no-splitting --dts",
     "test": "tsc && eslint . && prettier --check . && vitest run"
   }
 }

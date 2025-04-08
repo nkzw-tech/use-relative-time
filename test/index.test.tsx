@@ -1,6 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { afterEach, expect, test } from 'vitest';
-import useRelativeTime from '../src/use-relative-time.tsx';
+import useRelativeTime, { useTimeDifference } from '../src/index.tsx';
 
 const now = Date.now();
 
@@ -47,4 +47,14 @@ test('should fall back to basic rendering when `Intl.RelativeTimeFormat` is not 
   // The fallback prints the same output for past and future dates.
   ({ result } = renderHook(() => useRelativeTime(now + 100_000)));
   expect(result.current).toMatchInlineSnapshot('"2m"');
+});
+
+test('`useTimeDifference`', () => {
+  const { result } = renderHook(() => useTimeDifference(now - 100_000));
+  expect(Math.round(result.current / 1000)).toMatchInlineSnapshot(`-100`);
+
+  const { result: resultB } = renderHook(() =>
+    useTimeDifference(now + 100_000),
+  );
+  expect(Math.round(resultB.current / 1000)).toMatchInlineSnapshot(`100`);
 });
