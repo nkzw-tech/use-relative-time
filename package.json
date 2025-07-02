@@ -17,7 +17,7 @@
     "time"
   ],
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": ">=18"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
